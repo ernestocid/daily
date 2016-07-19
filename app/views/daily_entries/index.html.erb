@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Minhas Dailys</h2>
+
+<ul class="nav nav-pills">
+  <li role="presentation"><%= link_to 'Registrar Daily', new_daily_entry_path %></li>
+</ul>
+
+<br>
+
+<div class="panel panel-default">
+  <div class="panel-heading"><h5>Dailys</h5></div>
+  <table class="table">
+    <tr>
+      <th>Criado em</th>
+      <th>Feito ontem</th>
+      <th>Fazendo hoje</th>
+      <th>Impedimentos</th>
+    </tr>
+
+    <% @daily_entries.each do |daily_entry| %>
+      <tr>
+        <td><%= link_to daily_entry.created_at.to_date, daily_entry %></td>
+        <td><%= daily_entry.did_yesterday %></td>
+        <td><%= daily_entry.doing_today %></td>
+        <td><%= daily_entry.problems %></td>
+        <td><%= link_to 'Editar', edit_daily_entry_path(daily_entry) %></td>
+        <td><%= link_to 'Remover', daily_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+</div>

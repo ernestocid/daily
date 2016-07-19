@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  did_yesterday: MyString
+  doing_today: MyString
+  problems: MyString
+  posted_on: 2016-07-15
+
+two:
+  did_yesterday: MyString
+  doing_today: MyString
+  problems: MyString
+  posted_on: 2016-07-15

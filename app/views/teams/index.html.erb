@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Gerenciar Equipes</h2>
+
+<ul class="nav nav-pills">
+  <li role="presentation"><%= link_to 'Nova Equipe', new_team_path %></li>
+</ul>
+
+<br>
+
+<div class="panel panel-default">
+  <div class="panel-heading"><h5>Equipes</h5></div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Leader</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @teams.each do |team| %>
+        <tr>
+          <td><%= link_to team.name, team %></td>
+          <td><%= team.leader.email %></td>
+          <td><%= link_to 'Editar', edit_team_path(team) %></td>
+          <td><%= link_to 'Remover', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>

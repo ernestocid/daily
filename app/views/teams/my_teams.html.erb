@@ -1,0 +1,30 @@
+<h2>Minhas Equipes</h2>
+
+<% @teams_responsible_for.each do |team| %>
+  <div class="panel panel-default">
+    <div class="panel-heading"><h5><%= team.name %></h5></div>
+
+    <% if @dailys_by_teams[team.id] %>
+      <table class="table">
+        <tr>
+          <th>Criado por</th>
+          <th>Feito ontem</th>
+          <th>Fazendo hoje</th>
+          <th>Impedimentos</th>
+        </tr>
+        <% @dailys_by_teams[team.id].each do |d| %>
+          <tr>
+            <td><%= d.user.email %></td>
+            <td><%= d.did_yesterday %></td>
+            <td><%= d.doing_today %></td>
+            <td><%= d.problems %></td>
+          </tr>
+        <% end %>
+      </table>
+    <% else %>
+      <div class="panel-body">
+        <p>Nenhuma daily registrada para essa equipe.</p>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,16 @@
+<h1>Minhas Equipes</h1>
+
+
+<%= @teams_responsible_for.inspect %></br></br>
+<%= @dailys_by_teams.inspect %></br></br>
+<%= @teams_responsible_for[1].inspect %></br></br>
+<%= @teams_responsible_for[3].inspect %></br></br>
+
+<%= @teams_responsible_for.each do |team| %>
+  <h2><%= team.name %></h2>
+  <ul>
+    <% @dailys_by_teams[team.id].each do |daily| %>
+      <li><%= daily.to_s %></li>
+    <% end %>
+  </ul>
+<% end %>

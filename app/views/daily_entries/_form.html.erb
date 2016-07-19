@@ -1,0 +1,14 @@
+<%= simple_form_for(@daily_entry) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :did_yesterday %>
+    <%= f.input :doing_today %>
+    <%= f.input :problems %>
+    <%= f.input :team_id, as: :integer %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
