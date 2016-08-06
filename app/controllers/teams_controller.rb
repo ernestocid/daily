@@ -75,15 +75,15 @@ class TeamsController < ApplicationController
     redirect_to team_path(@team)
   end
 
+  # GET /teams/my_teams
+  # GET /teams/my_teams.json
   def my_teams
-    @dailys_by_teams = Hash.new
-    @teams_responsible_for = Team.where("leader_user_id = ?", current_user.id)
+    @teams_led_by_current_user = Team.teams_led_by(current_user)
+    @dailys_by_teams = DailyEntry.todays_dailys_for_teams(@teams_led_by_current_user)
 
-    @teams_responsible_for.each do |team|
-      todays_dailys = DailyEntry.where("created_at > ? and team_id = ?", Time.zone.now.beginning_of_day, team.id).to_a
-      if todays_dailys.any?
-        @dailys_by_teams[team.id] = todays_dailys
-      end
+    respond_to do |format|
+      format.html { render :my_teams }
+      format.json { render json: @dailys_by_teams }
     end
   end
 
