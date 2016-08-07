@@ -63,16 +63,8 @@ class TeamsController < ApplicationController
   end
 
   def add_member
-    @team = Team.find(params[:id])
-    @member = User.find(params[:user][:id])
-
-    # TODO: logic in the controller is not good. Find out how to
-    # do this in the model layer.
-    unless @team.members.include? @member
-      @team.members.push(@member)
-    end
-
-    redirect_to team_path(@team)
+    @team = Team.add_member_to_team(params[:id], params[:user][:id])
+    redirect_to @team
   end
 
   # GET /teams/my_teams
